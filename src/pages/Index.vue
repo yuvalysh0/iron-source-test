@@ -17,14 +17,18 @@
 import AddNewDesert from "components/AddNewDesert";
 import DesertTable from "components/DesertTable";
 import DessertsChart from "components/DessertsChart";
+import {mapState} from "vuex";
 
 export default {
   name: 'PageIndex',
   components: {
     DesertTable,
     AddNewDesert,
-    DessertsChart
-  }
+    DessertsChart,
+  },
+  computed: {
+    ...mapState('deserts', ['allDesserts'])
+  },
 }
 </script>
 
