@@ -21,6 +21,7 @@ import {mapState} from "vuex";
 
 export default {
   name: 'PageIndex',
+
   components: {
     DesertTable,
     AddNewDesert,
@@ -35,9 +36,11 @@ export default {
 <style scoped lang="scss">
 
 .q-page {
+  background:linear-gradient(to bottom, rgba(17, 17, 17, 0.52), rgba(0, 0, 0, 0.73)) ,url("../assets/image.jpg") no-repeat;
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,7 +51,8 @@ export default {
     h1 {
       font-size: 2.5em;
       color: var(--q-color-primary);
-      font-weight: bold;
+      font-weight: 600;
+      text-transform: uppercase;
     }
   }
 
@@ -57,6 +61,22 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .container {
+    .header {
+      h1 {
+        font-size: 1.5em;
+        line-height: 2;
+      }
+    }
+
+    .content {
+      width: 400px;
+    }
   }
 }
 

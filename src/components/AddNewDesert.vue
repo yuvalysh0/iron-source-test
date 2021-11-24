@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container">
     <q-btn v-if="!addDessertForm" color="secondary" label="Add a new desert" unelevated @click="addDessertForm = true"/>
     <q-btn v-else color="secondary" label="Cancel" unelevated @click="addDessertForm = false"/>
     <div class="form" v-show="addDessertForm">
-      <q-input filled v-model="dessertForm.dessertName" label="Dessert Name" />
-      <q-input filled v-model="dessertForm.dessertAmount" label="Dessert Amount" type="number" />
+      <q-input filled dark v-model="dessertForm.dessertName" label="Dessert Name" />
+      <q-input filled dark v-model="dessertForm.dessertAmount" label="Dessert Amount" type="number" />
 
       <q-btn color="primary" label="Add desert" unelevated @click="addNewDesert()"/>
     </div>
@@ -55,6 +55,17 @@ export default {
   padding: 1em;
   display: flex;
   gap: 1em;
+}
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 0 auto;
+  }
+  .form {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 </style>

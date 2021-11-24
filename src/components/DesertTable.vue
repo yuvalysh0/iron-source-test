@@ -1,50 +1,50 @@
 <template>
-  <div class="q-pa-md">
-    <q-table
-      flat
-      :dense="$q.screen.lt.md"
-      :data="data"
-      :columns="columns"
-      row-key="name"
-      style="border: 1px solid #E6E6E6; border-radius: 30px"
-    >
-      <template v-slot:header="props">
-        <q-tr :props="props">
-          <q-th
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.label }}
-          </q-th>
-          <q-th>Actions</q-th>
-        </q-tr>
-      </template>
+  <q-table
+    flat
+    class="table"
+    :dense="$q.screen.lt.md"
+    :data="data"
+    :columns="columns"
+    row-key="name"
+    style="border: 1px solid #E6E6E6; border-radius: 30px"
+  >
+    <template v-slot:header="props">
+      <q-tr :props="props">
+        <q-th
+          v-for="col in props.cols"
+          :key="col.name"
+          :props="props"
+        >
+          {{ col.label }}
+        </q-th>
+        <q-th>Actions</q-th>
+      </q-tr>
+    </template>
 
 
-      <template v-slot:body="props">
-        <q-tr :props="props">
-          <q-td
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.value }}
-          </q-td>
-          <q-td>
-            <q-btn @click="deleteDessert(props.row.dessertName)" color="negative" icon="delete" push></q-btn>
-          </q-td>
-        </q-tr>
-      </template>
-    </q-table>
-  </div>
+    <template v-slot:body="props">
+      <q-tr :props="props">
+        <q-td
+          v-for="col in props.cols"
+          :key="col.name"
+          :props="props"
+        >
+          {{ col.value }}
+        </q-td>
+        <q-td>
+          <q-btn @click="deleteDessert(props.row.dessertName)" color="negative" icon="delete" push></q-btn>
+        </q-td>
+      </q-tr>
+    </template>
+  </q-table>
 </template>
 
 <script>
 import {mapState, mapActions} from 'vuex'
+
 export default {
   name: "DesertTable",
-  data () {
+  data() {
     return {
       columns: [
         {
@@ -59,7 +59,7 @@ export default {
           style: 'max-width: 100px',
           headerClasses: 'bg-primary text-white'
         },
-        { name: 'dessertAmount', align: 'center', label: 'Amount', field: 'dessertAmount', sortable: true },
+        {name: 'dessertAmount', align: 'center', label: 'Amount', field: 'dessertAmount', sortable: true},
       ],
       data: [],
     }
@@ -92,7 +92,8 @@ export default {
 <style scoped>
 
 .table {
-  width: 100% ;
+  margin: 2em auto;
+  width: 90%;
 }
 
 </style>

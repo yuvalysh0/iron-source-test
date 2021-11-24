@@ -7,7 +7,6 @@
 <script>
 import Chart from 'chart.js'
 import {mapState} from "vuex";
-const ctx = document.getElementById('chart');
 
 export default {
   components: {},
@@ -39,6 +38,8 @@ export default {
           responsive: true,
           plugins: {
             legend: {
+              fontColor: 'black',
+              fontSize: 20,
               position: 'top',
             }
           }
@@ -47,7 +48,12 @@ export default {
     },
 
     mounted() {
+      const ctx = document.getElementById('chart');
       new Chart(ctx, this.planetChartData);
+    },
+
+    created() {
+      this.createChart()
     },
 
     getData() {
@@ -67,14 +73,11 @@ export default {
   computed: {
     ...mapState('deserts', ['allDesserts'])
   },
-  created() {
-    this.createChart()
-  },
-
   watch: {
-    allDesserts: function (newVal) {
-      this.createChart()
+    allDesserts: function () {
+      const ctx = document.getElementById('chart');
       this.resetArr()
+      this.createChart()
       new Chart(ctx, this.planetChartData);
     }
   },
